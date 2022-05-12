@@ -1,15 +1,14 @@
 package com.BlogApp.Blogz.services;
 
-import com.BlogApp.Blogz.entities.User;
-import com.BlogApp.Blogz.payloads.UserDTO;
+import com.BlogApp.Blogz.payloads.UserDto;
 
 import java.util.List;
 
 public interface UserService {
 
-    UserDTO createUser(UserDTO user);
-    UserDTO updateUser(UserDTO user, Integer userId);
-    UserDTO getUserById(Integer userId);
-    List<UserDTO> getAllUsers();
+    UserDto createUser(UserDto user);
+    UserDto updateUser(UserDto user, Integer userId);
+    UserDto getUserById(Integer userId);
+    List<UserDto> getAllUsers();
     void deleteUser(Integer userId);
 }
