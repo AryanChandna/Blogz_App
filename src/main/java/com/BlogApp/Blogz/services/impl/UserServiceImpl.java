@@ -2,7 +2,7 @@ package com.BlogApp.Blogz.services.impl;
 
 import com.BlogApp.Blogz.entities.User;
 import com.BlogApp.Blogz.exceptions.ResourceNotFoundException;
-import com.BlogApp.Blogz.payloads.UserDTO;
+import com.BlogApp.Blogz.payloads.UserDto;
 import com.BlogApp.Blogz.repositories.UserRepo;
 import com.BlogApp.Blogz.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,14 +18,14 @@ public class UserServiceImpl implements UserService {
     private UserRepo userRepo;
 
     @Override
-    public UserDTO createUser(UserDTO userDto) {
+    public UserDto createUser(UserDto userDto) {
         User user = this.dtoToUser(userDto);
         User savedUser = this.userRepo.save(user);
         return this.userToDto(savedUser);
     }
 
     @Override
-    public UserDTO updateUser(UserDTO userDto, Integer userId) {
+    public UserDto updateUser(UserDto userDto, Integer userId) {
         User user = this.userRepo.findById(userId).orElseThrow(() -> new ResourceNotFoundException("User", "id", userId));
 
         user.setName(userDto.getName());
@@ -35,12 +35,12 @@ public class UserServiceImpl implements UserService {
         user.setAbout(userDto.getAbout());
 
         User updatedUser = this.userRepo.save(user);
-        UserDTO userDto1 = this.userToDto(updatedUser);
+        UserDto userDto1 = this.userToDto(updatedUser);
         return userDto1;
     }
 
     @Override
-    public UserDTO getUserById(Integer userId) {
+    public UserDto getUserById(Integer userId) {
         User user = this.userRepo.findById(userId).orElseThrow(()-> new ResourceNotFoundException("User","Id",userId));
 
 
@@ -48,10 +48,10 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public List<UserDTO> getAllUsers() {
+    public List<UserDto> getAllUsers() {
 
         List<User> users = this.userRepo.findAll();
-        List<UserDTO> userDtos = users.stream().map(user -> this.userToDto(user)).collect(Collectors.toList());
+        List<UserDto> userDtos = users.stream().map(user -> this.userToDto(user)).collect(Collectors.toList());
         return userDtos;
     }
 
@@ -62,7 +62,7 @@ public class UserServiceImpl implements UserService {
         this.userRepo.delete(user);
     }
 
-    private User dtoToUser(UserDTO userDto) {
+    private User dtoToUser(UserDto userDto) {
         User user = new User();
         user.setId(userDto.getId());
         user.setName(userDto.getName());
@@ -71,9 +71,9 @@ public class UserServiceImpl implements UserService {
         user.setPassword(userDto.getPassword());
         return user;
     }
-    public UserDTO userToDto(User user){
+    public UserDto userToDto(User user){
 
-        UserDTO userDto = new UserDTO();
+        UserDto userDto = new UserDto();
         userDto.setId(user.getId());
         userDto.setEmail(user.getEmail());
         userDto.setName(user.getName());
