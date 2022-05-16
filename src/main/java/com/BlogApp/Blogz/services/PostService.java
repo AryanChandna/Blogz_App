@@ -26,7 +26,7 @@ public interface PostService {
 
     // get all posts
 
-    PostResponse getAllPosts(Integer pageNumber, Integer pageSize);
+    PostResponse getAllPosts(Integer pageNumber, Integer pageSize, String sortBy, String SortDir);
 
     //get all posts by category
 
