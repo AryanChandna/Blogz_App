@@ -1,5 +1,6 @@
 package com.BlogApp.Blogz.services;
 
+import com.BlogApp.Blogz.entities.Post;
 import com.BlogApp.Blogz.payloads.PostDto;
 
 import java.util.List;
@@ -18,11 +19,13 @@ public interface PostService {
 
     void deletePost(Integer postId);
 
-
-
     //get single post
 
     PostDto getPostById(Integer postId);
+
+    // get all posts
+
+    List<PostDto> getAllPosts(Integer pageNumber, Integer pageSize);
 
     //get all posts by category
 
