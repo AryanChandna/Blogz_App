@@ -15,4 +15,7 @@ public interface PostRepo extends JpaRepository<Post, Integer> {
     List<Post> findByUser(User user);
     List<Post> findByCategory(Category category);
 
+    @Query("select p from Post p where p.content like :key")
+    List<Post> SearchByWord(@Param("key") String content);
+
     }
