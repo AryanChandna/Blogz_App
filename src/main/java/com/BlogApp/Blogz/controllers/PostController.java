@@ -8,6 +8,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.BlogApp.Blogz.payloads.ApiResponse;
 import com.BlogApp.Blogz.payloads.PostDto;
+import com.BlogApp.Blogz.payloads.PostResponse;
 import com.BlogApp.Blogz.services.PostService;
 import org.hibernate.engine.jdbc.StreamUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -64,10 +65,10 @@ public class PostController {
     }
     //get all posts
     @GetMapping("/posts")
-    public ResponseEntity<List<PostDto>> getAllPosts(@RequestParam(value = "pageNumber", defaultValue ="1",required = false)Integer pageNumber, @RequestParam(value="pageSize",defaultValue ="5",required = false) Integer pageSize) {
+    public ResponseEntity<PostResponse> getAllPosts(@RequestParam(value = "pageNumber", defaultValue ="0",required = false)Integer pageNumber, @RequestParam(value="pageSize",defaultValue ="5",required = false) Integer pageSize) {
 
-        List<PostDto> posts = this.postService.getAllPosts(pageNumber, pageSize);
-        return new ResponseEntity<List<PostDto>>(posts, HttpStatus.OK);
+        PostResponse postResponse = this.postService.getAllPosts(pageNumber, pageSize);
+        return new ResponseEntity<PostResponse>(postResponse, HttpStatus.OK);
 
     }
     //get post by id

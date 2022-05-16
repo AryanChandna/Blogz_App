@@ -2,6 +2,7 @@ package com.BlogApp.Blogz.services;
 
 import com.BlogApp.Blogz.entities.Post;
 import com.BlogApp.Blogz.payloads.PostDto;
+import com.BlogApp.Blogz.payloads.PostResponse;
 
 import java.util.List;
 
@@ -25,7 +26,7 @@ public interface PostService {
 
     // get all posts
 
-    List<PostDto> getAllPosts(Integer pageNumber, Integer pageSize);
+    PostResponse getAllPosts(Integer pageNumber, Integer pageSize);
 
     //get all posts by category
 
