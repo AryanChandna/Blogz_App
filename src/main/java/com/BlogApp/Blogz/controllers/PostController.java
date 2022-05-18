@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.BlogApp.Blogz.config.AppConstants;
 import com.BlogApp.Blogz.payloads.ApiResponse;
+import com.BlogApp.Blogz.payloads.CommentDto;
 import com.BlogApp.Blogz.payloads.PostDto;
 import com.BlogApp.Blogz.payloads.PostResponse;
 import com.BlogApp.Blogz.services.FileService;
@@ -128,6 +129,7 @@ public class PostController {
         response.setContentType(MediaType.IMAGE_JPEG_VALUE);
         StreamUtils.copy(resource, response.getOutputStream());
     }
+
 
 
 }
